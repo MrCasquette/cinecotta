@@ -1505,9 +1505,8 @@ h3.tagline {
 }
 /* cinéCOTTA — Barre de progression épaisse (scoped au player, pas au volume) */
 .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex {
-    height: 20px !important;
-    margin-top: -20px !important;
-    transition: height 0.2s ease !important;
+    height: 30px !important;
+    margin-top: -30px !important;
 }
 .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex-inner {
     height: 100% !important;
@@ -1516,12 +1515,10 @@ h3.tagline {
 .sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex-container {
     display: flex !important;
     align-items: center !important;
-    min-height: 20px !important;
+    min-height: 30px !important;
 }
-/* Hover : barre plus épaisse */
-.sliderContainer:not(.osdVolumeSliderContainer):hover .mdl-slider-background-flex {
-    height: 30px !important;
-    margin-top: -30px !important;
+.sliderContainer:not(.osdVolumeSliderContainer).mdl-slider-container {
+    height: 100% !important;
 }
 .mdl-slider-background-lower { /* The filled (played) part of the track */
     border-radius: 100px !important; /* Pill shape */
@@ -1540,7 +1537,7 @@ h3.tagline {
 
 /* Zone de clic du slider élargie (player uniquement) */
 .osdPositionSlider.mdl-slider {
-    height: 20px !important;
+    height: 30px !important;
     margin: 0 !important;
     cursor: pointer !important;
 }
@@ -1605,7 +1602,11 @@ h3.tagline {
 
 /* .btnPip - kept visible for PiP support */
 
-.osdControls .btnUserRating {
+.osdControls .btnUserRating,
+.osdControls .btnPreviousChapter,
+.osdControls .btnNextChapter,
+.osdControls .btnPreviousTrack,
+.osdControls .btnNextTrack {
     display: none !important;
 }
 
@@ -1674,6 +1675,42 @@ h3.tagline {
 /* == cinéCOTTA — Taille de la vidéo preview media bar == */
 .video-container.active .video-player {
     transform: scale(1.5);
+}
+
+/* == cinéCOTTA — Boutons détail glassmorphism == */
+.button-container .detailButton {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    color: white;
+    transition: background 0.2s ease;
+}
+.button-container .detailButton:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+.button-container .btnPlay {
+    background: var(--theme-primary-color, #4fd1a5);
+    border: none;
+    color: #000;
+    font-weight: bold;
+}
+.button-container .btnPlay:hover {
+    opacity: 0.85;
+}
+
+/* == cinéCOTTA — Traductions FR login == */
+#loginPage button.emby-button[type="submit"] span::after {
+    content: "Se connecter" !important;
+}
+#loginPage > div > form > label > span.checkboxLabel::after {
+    content: "Se souvenir de moi" !important;
+}
+
+/* == cinéCOTTA — Skip button timing == */
+:root {
+    --skip-hide-duration: 8s;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~ PLUGIN SUPPORT ~~~~~~~~~~~~~~~~~~~~ */
@@ -1749,19 +1786,20 @@ h3.tagline {
 
 /* == Intro Skipper Markers on Progress Bar == */
 /* Controls visibility and appearance of intro/credit markers on the player progress bar. */
-/* Hide markers when progress bar thumb is not hovered. */
-.sliderContainer:has(.mdl-slider-hoverthumb:not(:hover)) .sliderMarker {
-    opacity: 0 !important;
-    transition: 0.2s !important;
-}
-/* Show markers when progress bar thumb is hovered. */
-.sliderContainer:has(.mdl-slider-hoverthumb:hover) .sliderMarker {
+/* Marqueurs toujours visibles et alignés avec la barre épaisse */
+.sliderContainer:not(.osdVolumeSliderContainer) .sliderMarker {
     opacity: 1 !important;
-    transition: 0.2s !important;
-    height: 20px !important; /* Match progress bar height */
-    transform: translate3d(0, 0, 0) !important; /* Aligned with bar */
+    height: 30px !important;
+    transform: translate3d(0, 0, 0) !important;
     -webkit-transform: translate3d(0, 0, 0) !important;
-    z-index: 10 !important; /* Ensure visibility above other elements */
+    z-index: 10 !important;
+    border-radius: 100px !important;
+}
+/* Conteneur des marqueurs clipé à la barre */
+.sliderContainer:not(.osdVolumeSliderContainer) .sliderMarkerContainer {
+    overflow: hidden !important;
+    border-radius: 100px !important;
+    height: 30px !important;
 }
 /* Style for "watched" or passed markers (e.g., intro already skipped). */
 .sliderMarker.watched {
