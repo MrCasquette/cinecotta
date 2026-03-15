@@ -1498,48 +1498,51 @@ h3.tagline {
 /* == Player Progress Bar Styling (MDL Slider) == */
 /* Customizes the appearance of the Material Design Lite slider used for player progress. */
 .mdl-slider-background-flex { /* The track container for the slider */
-    height: 20px !important;
-    margin-top: 0 !important;
+    height: 10px !important;
+    margin-top: -5px !important; /* Vertical centering adjustment */
     border-radius: 100px !important; /* Pill shape */
     background: hsla(0, 0%, 100%, .2) !important; /* Light, semi-transparent track */
+}
+/* cinéCOTTA — Barre de progression épaisse (scoped au player, pas au volume) */
+.sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex {
+    height: 20px !important;
+    margin-top: -20px !important;
     transition: height 0.2s ease !important;
 }
-.mdl-slider-background-flex-inner {
+.sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex-inner {
     height: 100% !important;
     border-radius: 100px !important;
 }
-.mdl-slider-background-flex-container {
+.sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-flex-container {
     display: flex !important;
     align-items: center !important;
     min-height: 20px !important;
 }
 /* Hover : barre plus épaisse */
-.sliderContainer:hover .mdl-slider-background-flex {
+.sliderContainer:not(.osdVolumeSliderContainer):hover .mdl-slider-background-flex {
     height: 30px !important;
+    margin-top: -30px !important;
 }
 .mdl-slider-background-lower { /* The filled (played) part of the track */
     border-radius: 100px !important; /* Pill shape */
     background-color: var(--primary-accent-color) !important; /* Uses primary accent color */
-    height: 100% !important;
 }
 .mdl-slider-background-upper { /* The unfilled (remaining) part of the track */
     border-radius: 100px !important; /* Pill shape */
     background: hsla(0, 0%, 100%, .2) !important; /* Matches track background */
     transform: translateX(-3px) !important; /* Slight adjustment for visual alignment */
+}
+/* cinéCOTTA — upper/lower remplissent la hauteur (player uniquement) */
+.sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-lower,
+.sliderContainer:not(.osdVolumeSliderContainer) .mdl-slider-background-upper {
     height: 100% !important;
 }
 
-/* Zone de clic du slider élargie */
+/* Zone de clic du slider élargie (player uniquement) */
 .osdPositionSlider.mdl-slider {
     height: 20px !important;
     margin: 0 !important;
     cursor: pointer !important;
-}
-/* Timers elapsed/remaining centrés verticalement */
-.osdTextContainer {
-    display: flex !important;
-    align-items: center !important;
-    min-height: 20px !important;
 }
 
 /* == Player Progress Bar Thumb Styling - Invisible Thumb == */
