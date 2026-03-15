@@ -1606,6 +1606,73 @@ h3.tagline {
     display: none !important;
 }
 
+/* == cinéCOTTA — Gros bouton Play/Pause central == */
+.videoOsdBottom .btnPause {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 1000 !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 50% !important;
+    width: 80px !important;
+    height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s ease, transform 0.2s ease !important;
+}
+.videoOsdBottom .btnPause:hover {
+    background: rgba(0, 0, 0, 0.65) !important;
+    transform: translate(-50%, -50%) scale(1.1) !important;
+}
+.videoOsdBottom .btnPause .material-icons {
+    font-size: 2.8rem !important;
+    color: white !important;
+}
+
+/* == cinéCOTTA — Boutons Rewind / Forward centrés == */
+.videoOsdBottom .btnRewind,
+.videoOsdBottom .btnFastForward {
+    position: fixed !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 1000 !important;
+    background: rgba(0, 0, 0, 0.35) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+    width: 56px !important;
+    height: 56px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s ease, transform 0.2s ease !important;
+}
+.videoOsdBottom .btnRewind {
+    left: calc(50% - 110px) !important;
+}
+.videoOsdBottom .btnFastForward {
+    left: calc(50% + 110px) !important;
+}
+.videoOsdBottom .btnRewind:hover,
+.videoOsdBottom .btnFastForward:hover {
+    background: rgba(0, 0, 0, 0.6) !important;
+    transform: translate(-50%, -50%) scale(1.1) !important;
+}
+.videoOsdBottom .btnRewind .material-icons,
+.videoOsdBottom .btnFastForward .material-icons {
+    font-size: 1.8rem !important;
+    color: white !important;
+}
+
+/* == cinéCOTTA — Taille de la vidéo preview media bar == */
+.video-container.active .video-player {
+    transform: scale(1.5);
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~ PLUGIN SUPPORT ~~~~~~~~~~~~~~~~~~~~ */
 /* Styles for enhancing or fixing compatibility with various Jellyfin plugins. */
 
