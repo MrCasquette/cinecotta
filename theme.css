@@ -1498,21 +1498,48 @@ h3.tagline {
 /* == Player Progress Bar Styling (MDL Slider) == */
 /* Customizes the appearance of the Material Design Lite slider used for player progress. */
 .mdl-slider-background-flex { /* The track container for the slider */
-    height: 10px !important;
-    margin-top: -5px !important; /* Vertical centering adjustment */
+    height: 20px !important;
+    margin-top: 0 !important;
     border-radius: 100px !important; /* Pill shape */
     background: hsla(0, 0%, 100%, .2) !important; /* Light, semi-transparent track */
+    transition: height 0.2s ease !important;
+}
+.mdl-slider-background-flex-inner {
+    height: 100% !important;
+    border-radius: 100px !important;
+}
+.mdl-slider-background-flex-container {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 20px !important;
+}
+/* Hover : barre plus épaisse */
+.sliderContainer:hover .mdl-slider-background-flex {
+    height: 30px !important;
 }
 .mdl-slider-background-lower { /* The filled (played) part of the track */
     border-radius: 100px !important; /* Pill shape */
     background-color: var(--primary-accent-color) !important; /* Uses primary accent color */
+    height: 100% !important;
 }
 .mdl-slider-background-upper { /* The unfilled (remaining) part of the track */
-    border-top-right-radius: 100px !important;
     border-radius: 100px !important; /* Pill shape */
-    border-bottom-right-radius: 100px !important;
     background: hsla(0, 0%, 100%, .2) !important; /* Matches track background */
     transform: translateX(-3px) !important; /* Slight adjustment for visual alignment */
+    height: 100% !important;
+}
+
+/* Zone de clic du slider élargie */
+.osdPositionSlider.mdl-slider {
+    height: 20px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+}
+/* Timers elapsed/remaining centrés verticalement */
+.osdTextContainer {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 20px !important;
 }
 
 /* == Player Progress Bar Thumb Styling - Invisible Thumb == */
@@ -1573,9 +1600,7 @@ h3.tagline {
 .material-icons.fast_rewind::before { content: "\e042"; }
 .material-icons.fast_forward::before { content: "\f6f4"; }
 
-.btnPip {
-    display: none !important; /* Hides the Picture-in-Picture button */
-}
+/* .btnPip - kept visible for PiP support */
 
 .osdControls .btnUserRating {
     display: none !important;
@@ -1663,9 +1688,9 @@ h3.tagline {
 .sliderContainer:has(.mdl-slider-hoverthumb:hover) .sliderMarker {
     opacity: 1 !important;
     transition: 0.2s !important;
-    height: 10px !important; /* Make markers taller */
-    transform: translate3d(0, 40%, 0) !important; /* Adjust vertical position */
-    -webkit-transform: translate3d(0, 40%, 0) !important;
+    height: 20px !important; /* Match progress bar height */
+    transform: translate3d(0, 0, 0) !important; /* Aligned with bar */
+    -webkit-transform: translate3d(0, 0, 0) !important;
     z-index: 10 !important; /* Ensure visibility above other elements */
 }
 /* Style for "watched" or passed markers (e.g., intro already skipped). */
